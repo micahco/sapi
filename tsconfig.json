@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"target": "es6",
+		"outDir": "./dist",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"declaration": true,
+		"strict": true,
+		"noImplicitAny": true
+	},
+	"include": [
+		"./src/**/*"
+	]
+}

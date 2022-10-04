@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>sapi</title>
+	<style>
+		body {
+			font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+		}
+		header {
+			margin: 2em 0;
+		}
+	</style>
+</head>
+<body>
+	<header><h1>sapi</h1></header>
+	<div id="app"></div>
+	<!-- TEMPLATES -->
+	<template id="style">
+		<style>
+			li {
+				margin: 0.2em 0;
+			}
+			.flex-wrap {
+				display: flex;
+				flex-direction: column;
+				margin: 2em 0;
+			}
+			#search {
+				display: flex;
+				flex-wrap: wrap-reverse;
+				height: 130px;
+			}
+			#search-bar {
+				margin-right: 2em;
+			}
+			#search-bar > fieldset {
+				padding: 0.5em 0;
+				margin: 0;
+				border: none;
+				display: flex;
+				gap: 1em;
+			}
+			#search-bar label {
+				display: inline-flex;
+				align-items: center;
+			}
+			#search-results {
+				margin: 0;
+				padding: 0;
+			}
+			#search-results > li:hover {
+				cursor: pointer;
+				text-decoration: underline;
+			}
+			#seeds ul {
+				padding: 0;
+			}
+			#seeds li {
+				display: inline-block;
+				margin-right: 0.5em;
+			}
+			#seeds li::after {
+				content: ",";
+			}
+			#seeds li:last-child::after {
+				content: "";
+			}
+			#seeds li:hover {
+				cursor: pointer;
+				text-decoration: line-through;
+				color: tomato;
+			}
+			#artist-seeds::before {
+				content: 'Artists: ';
+				font-weight: bold;
+			}
+			#track-seeds::before {
+				content: 'Tracks: ';
+				font-weight: bold;
+			}
+			#artist-seeds:empty, #track-seeds:empty {
+				display: none;
+			}
+		</style>
+	</template>
+	<template id="template-fieldset">
+		<fieldset>
+			<radio-button data-checked>artist</radio-button>
+			<radio-button>track</radio-button>
+		</fieldset>
+	</template>
+	<script src="dist/bundle.min.js"></script>
+</body>
+</html>
