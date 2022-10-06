@@ -1,0 +1,93 @@
+fieldset {
+	margin: 0;
+}
+.flex {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2rem;
+}
+.wrap-reverse {
+	flex-wrap: wrap-reverse;
+}
+.hidden {
+	display: none;
+}
+.magic-list {
+	padding: 0;
+	list-style: none;
+}
+.magic-list::before {
+	font-weight: bold;
+}
+.magic-list:empty {
+	display: none;
+	visibility: hidden;
+}
+.magic-list > li {
+	margin-top: 1rem;
+}
+.magic-list > li:first-child {
+	margin-top: 0.5rem;
+}
+.magic-list > li:hover {
+	cursor: pointer;
+}
+#search-box {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+#get-playlist:not([disabled]) {
+	font-weight: bold;
+}
+#get-playlist:disabled:hover {
+	cursor: no-drop;
+}
+#search, #search-results {
+	width: 300px;
+}
+#search-results::before {
+	content: "search results";
+}
+#search-results > li {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+#search-results > li:hover {
+	color: olivedrab;
+}
+#search-results > li:hover::after {
+	content: " \2B9E";
+}
+.seeds-list:not(:first-child) {
+	margin-top: 1em;
+}
+.seeds-list > li:hover {
+	color: tomato;
+	text-decoration: line-through;
+}
+#artist-seeds::before {
+	content: "artist seeds";
+	flex: 0 0 100%;
+}
+#artist-seeds {
+	display: flex;
+	flex-wrap: wrap;
+	padding-inline-start: 0;
+	list-style: none;
+}
+#artist-seeds > li {
+	margin: 0.5rem 0.5rem 0 0;
+}
+#artist-seeds > li:not(:last-child)::after {
+	content: ','; 
+}
+#track-seeds::before {
+	content: "track seeds";
+}
+#playlist-ordered > li {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
