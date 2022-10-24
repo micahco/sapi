@@ -1,4 +1,4 @@
-import { getConfig } from './config';
+import CONFIG from '../config.json';
 import AppContainer from './components/AppContainer';
 import LinkButton from './components/LinkButton';
 
@@ -9,17 +9,17 @@ import LinkButton from './components/LinkButton';
 
 	const root = document.getElementById('app')!;
 	try {
-		const response = await fetch(getConfig().apiURL + '/auth', {
+		const response = await fetch(CONFIG.apiURL + '/auth', {
 			method: "GET",
 			credentials: "include"
 		});
 		const header = document.querySelector('header')!;
 		if (response.ok) {
-			header.innerHTML += `<link-button data-href='${getConfig().apiURL}/auth/logout'>Logout</link-button>`;
+			header.innerHTML += `<link-button data-href='${CONFIG.apiURL}/auth/logout'>Logout</link-button>`;
 			const ac = document.createElement('app-container');
 			root.appendChild(ac);
 		} else {
-			header.innerHTML += `<link-button data-href='${getConfig().apiURL}/auth/login'>Login with Spotify</link-button>`;
+			header.innerHTML += `<link-button data-href='${CONFIG.apiURL}/auth/login'>Login with Spotify</link-button>`;
 		}
 	} catch(error) {
 		console.error(error);

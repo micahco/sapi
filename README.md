@@ -6,8 +6,4 @@
 
 * Something _ _ _
 
-***A Spotify API recommendations frontend.***
-
-This is a proof of concept / exercise.
-
-I wanted to make a simple frontend with no libraries and learn [customElements]().
+***Spotify API recommendations***

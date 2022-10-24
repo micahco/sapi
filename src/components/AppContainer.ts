@@ -1,4 +1,4 @@
-import { getConfig, Config } from '../config';
+import CONFIG from '../../config.json';
 
 interface ItemJSON {
 	artists: [{name: string}];
@@ -9,7 +9,6 @@ interface ItemJSON {
 }
 
 export default class AppContainer extends HTMLElement {
-	config: Config;
 	searchElement!: HTMLInputElement;
 	searchTypeElement!: HTMLFieldSetElement;
 	searchResultsElement!: HTMLUListElement;
@@ -26,11 +25,6 @@ export default class AppContainer extends HTMLElement {
 	savePlaylistButton!: HTMLButtonElement;
 	clearPlaylistButton!: HTMLButtonElement;
 	resultsElement!: HTMLDivElement;
-
-	constructor() {
-		super();
-		this.config = getConfig();
-	}
 
 	connectedCallback() {
 		const shadowRoot = this.attachShadow({ mode: 'open' });
@@ -92,7 +86,7 @@ export default class AppContainer extends HTMLElement {
 		if (type != 'artist' && type != 'track') {
 			return console.error('invalid type');
 		}
-		const url = `${this.config.apiURL}/search?q=${query}&type=${type}`;
+		const url = `${CONFIG.apiURL}/search?q=${query}&type=${type}`;
 		try {
 			const response = await fetch(url, {
 				method: "GET",
@@ -194,7 +188,7 @@ export default class AppContainer extends HTMLElement {
 	private async getPlaylist() {
 		const seedArtists = this.getSeeds('artist').join(',');
 		const seedTracks = this.getSeeds('track').join(',');
-		let url = `${this.config.apiURL}/rec
+		let url = `${CONFIG.apiURL}/rec
 			?seed_artists=${seedArtists}
 			&seed_tracks=${seedTracks}
 			&target_danceability=${this.danceability.value}
@@ -231,7 +225,7 @@ export default class AppContainer extends HTMLElement {
 	private async addPlaylistToUserLibray(trackURIs: string[]) {
 		const body =  {uris: [] as string[]};
 		body.uris = trackURIs;
-		const response = await fetch(this.config.apiURL + '/playlist', {
+		const response = await fetch(CONFIG.apiURL + '/playlist', {
 			method: "POST",
 			credentials: "include",
 			body: JSON.stringify(body),
