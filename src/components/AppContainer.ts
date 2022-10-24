@@ -25,6 +25,7 @@ export default class AppContainer extends HTMLElement {
 	playlistOrdered!: HTMLOListElement;
 	savePlaylistButton!: HTMLButtonElement;
 	clearPlaylistButton!: HTMLButtonElement;
+	resultsElement!: HTMLDivElement;
 
 	constructor() {
 		super();
@@ -52,6 +53,7 @@ export default class AppContainer extends HTMLElement {
 		this.playlistOrdered = shadowRoot.getElementById('playlist-ordered') as HTMLOListElement;
 		this.savePlaylistButton = shadowRoot.getElementById('save-playlist') as HTMLButtonElement;
 		this.clearPlaylistButton = shadowRoot.getElementById('clear-playlist') as HTMLButtonElement;
+		this.resultsElement = shadowRoot.getElementById('results') as HTMLDivElement;
 		// event listeners
 		this.searchElement.addEventListener('keyup', this.handleSearchKeyup.bind(this));
 		this.searchElement.addEventListener('search', this.handleSearchEvent.bind(this));
@@ -79,6 +81,7 @@ export default class AppContainer extends HTMLElement {
 		if(!this.hasSeeds()) {
 			return console.error('The button abides')
 		}
+		this.clearResults();
 		this.getPlaylist();
 	}
 
@@ -199,7 +202,6 @@ export default class AppContainer extends HTMLElement {
 			&target_popularity=${this.popularity.value}
 			&target_valence=${this.valence.value}
 		`;
-		console.log(url);
 		const response = await fetch(url, {
 			method: "GET",
 			credentials: "include"
@@ -242,8 +244,8 @@ export default class AppContainer extends HTMLElement {
 		link.href = `https://open.spotify.com/user/${json.username}/playlist/${json.id}`;
 		link.target = '_blank';
 		link.textContent = link.href;
+		this.resultsElement.replaceChildren(link);
 		this.clearPlaylist();
-		this.shadowRoot?.appendChild(link);
 	}
 	private clearPlaylist() {
 		this.playlistOrdered.replaceChildren();

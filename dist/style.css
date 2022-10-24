@@ -56,9 +56,7 @@ fieldset {
 }
 #search-results > li:hover {
 	color: olivedrab;
-}
-#search-results > li:hover::after {
-	content: " \2B9E";
+	text-decoration: underline;
 }
 .seeds-list:not(:first-child) {
 	margin-top: 1em;
@@ -86,8 +84,16 @@ fieldset {
 #track-seeds::before {
 	content: "track seeds";
 }
+#playlist-ordered {
+	font-family: monospace;
+	counter-reset: PLAYLIST;
+}
 #playlist-ordered > li {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+#playlist-ordered > li::before {
+	content: counter(PLAYLIST) ". ";
+	counter-increment: PLAYLIST;
 }
