@@ -1,11 +1,11 @@
 
-* make sure `main.go` has `config := getConfig("./config.json")` not production (do not change this, the prod file is only for reference)
+make sure `main.go` has `config := getConfig("./config.json")` not production (do not change this, the prod file is only for reference)
 
-* to compile: `go build`
+to compile: `go build`
 
-* give non-root user premissions to ssl certs
+give non-root user premissions to ssl certs
 	chgrp -R ssl-cert /etc/letsencrypt
 	chmod -R g=rX /etc/letsencrypt
 
-* give non-root user access to privleged ports
+give non-root user access to privleged ports
 	setcap 'cap_net_bind_service=+ep' /path/to/api/executable
