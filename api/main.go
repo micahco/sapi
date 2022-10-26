@@ -114,6 +114,7 @@ func main() {
 
 	// Go!
 	if config.Production {
+		fmt.Println("http.ListenAndServeTLS: http://localhost:443/")
 		err := http.ListenAndServeTLS(
 			":443",
 			"/etc/letsencrypt/live/api.micahcowell.com/fullchain.pem",
@@ -124,6 +125,7 @@ func main() {
 			fmt.Println(err)
 		}
 	} else {
+		fmt.Println("http.ListenAndServe: http://localhost:3000/")
 		http.ListenAndServe(":3000", app)
 	}
 }
@@ -145,12 +147,12 @@ func GenerateRandomBytes(n int) []byte {
 }
 
 type config struct {
-	APIURL			string 	`json:"apiURL"`
-	AppURL			string 	`json:"appURL"`
-	RedirectURI			string 	`json:"redirectURI"`
-	SpotifyClientID		string 	`json:"spotifyClientID"`
-	SpotifyClientSecret	string	`json:"spotifyClientSecret"`
-	Production			bool		`json:"production"`
+	APIURL              string `json:"apiURL"`
+	AppURL              string `json:"appURL"`
+	RedirectURI         string `json:"redirectURI"`
+	SpotifyClientID     string `json:"spotifyClientID"`
+	SpotifyClientSecret string `json:"spotifyClientSecret"`
+	Production          bool   `json:"production"`
 }
 
 func getConfig(path string) config {

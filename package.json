@@ -1,12 +1,13 @@
 {
-  "name": "sapi-app",
+  "name": "spotify-recs",
   "version": "0.0.1",
   "main": "src/index.ts",
   "scripts": {
     "start": "./node_modules/.bin/webpack-dev-server",
-    "build": "./node_modules/.bin/webpack --mode=production"
+    "build": "./node_modules/.bin/webpack --mode=production",
+    "server": "./api/spotify-recs"
   },
-  "repository": "git@github.com:micahco/sapi-app.git",
+  "repository": "git@github.com:micahco/spotify-recs.git",
   "author": "micahco <micahcowell@gmail.com>",
   "license": "BSD-2-Clause",
   "devDependencies": {

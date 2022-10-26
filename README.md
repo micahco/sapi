@@ -1,9 +1,3 @@
-# sapi-app
-
-* Spotify API
-
-* Spotify automated playlist interface
-
-* Something _ _ _
+# spotify-recs
 
 ***Spotify API recommendations***
