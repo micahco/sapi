@@ -1,3 +1,3 @@
-# spotify-recs
+# spotify api
 
-***Spotify API recommendations***
+Recommendations interface

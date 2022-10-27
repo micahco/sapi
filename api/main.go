@@ -117,8 +117,8 @@ func main() {
 		fmt.Println("http.ListenAndServeTLS: http://localhost:443/")
 		err := http.ListenAndServeTLS(
 			":443",
-			"/etc/letsencrypt/live/api.micahcowell.com/fullchain.pem",
-			"/etc/letsencrypt/live/api.micahcowell.com/privkey.pem",
+			"/etc/letsencrypt/live/api.cowell.dev/fullchain.pem",
+			"/etc/letsencrypt/live/api.cowell.dev/privkey.pem",
 			app,
 		)
 		if err != nil {

@@ -1,4 +1,4 @@
-module micahco/spotify-recs
+module micahco/sapi
 go 1.19
 
 require (
