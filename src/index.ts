@@ -1,6 +1,6 @@
-import CONFIG from '../config.json';
 import AppContainer from './components/AppContainer';
 import LinkButton from './components/LinkButton';
+declare var CONFIG: any;
 
 (async () => {
 	// customElements definitions

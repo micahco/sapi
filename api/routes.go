@@ -22,7 +22,7 @@ type LoginHandler struct {
 func (h *LoginHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
-		fmt.Println("GET /login")
+		fmt.Println("GET /auth/login")
 		loginGet(w, r, h)
 	default:
 		SendBadRequest(w, r.Method)
@@ -59,7 +59,7 @@ type CallbackHandler struct {
 func (h *CallbackHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
-		fmt.Println("GET /callback")
+		fmt.Println("GET /auth/callback")
 		callbackGet(w, r, h)
 	default:
 		SendBadRequest(w, r.Method)

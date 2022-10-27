@@ -3,7 +3,7 @@ npm-debug.log
 /node_modules
 config.json
 config.prod.json
-api/spotify-recs
+api/sapi
 
 # Binaries for programs and plugins
 *.exe

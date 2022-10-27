@@ -1,6 +1,19 @@
 const webpack = require('webpack');
 const path = require('path');
 
+const devConfig = require('./config.json');
+const prodConfig = require('./config.prod.json');
+
+function composeConfig(env: any) {
+	console.log(env)
+	if (env.WEBPACK_BUILD) {
+		return { ...prodConfig };
+	} else {
+		return { ...devConfig};
+	}
+}
+
+
 module.exports = (env: any, argv: any) => {
 	return { 
 		entry: './src/index.ts',
@@ -24,7 +37,7 @@ module.exports = (env: any, argv: any) => {
 		},
 		plugins: [
 			new webpack.DefinePlugin({
-				PRODUCTION: JSON.stringify(argv.mode === 'production'),
+				CONFIG: JSON.stringify(composeConfig(env)),
 			}),
 		],
 		devServer: {

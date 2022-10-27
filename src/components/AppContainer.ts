@@ -1,4 +1,4 @@
-import CONFIG from '../../config.json';
+declare var CONFIG: any;
 
 interface ItemJSON {
 	artists: [{name: string}];
